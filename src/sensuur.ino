@@ -27,17 +27,13 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
 void setup() {
-    // Initialize serial communication to allow debugging and data readout.
-    // Using a baud rate of 9600 bps.
+    // Serial kommunikatsiooni initsialiseerimine
     Serial.begin(9600);
-    
-    // Uncomment the line below to set a custom delay between sensor readings (in milliseconds).
-    // dht11.setDelay(500); // Set this to the desired delay. Default is 500ms.
 
-    // Start up the library
+    // Teegi initsialiseerimine
     sensors.begin();
 
-    // Screen startup
+    // Ekraani startup
     tft.begin();
 
     uint8_t rotation=1;
@@ -50,17 +46,17 @@ void loop() {
     int humidity = 0;
     int soilMoisture = analogRead(sensor);
     int moisture = map(soilMoisture, wet, dry, 100, 0);
-    // Attempt to read the temperature and humidity values from the DHT11 sensor.
+    // Loeme õhuniiskuse ja temperatuuri DHT11 sensorilt.
     int result = dht11.readTemperatureHumidity(temperature, humidity);
-
-    //MQ135
-    //correction based on DHT11 readings
+    
+    // MQ135
+    // Korrektsioon DHT11 näitude põhjal
     float correctedPPM = mq135_sensor.getCorrectedPPM(temperature, humidity);
     
-    // Call sensors.requestTemperatures() to issue a global temperature and Requests to all devices on the bus
+    // Kutsu sensors.requestTemperatures(), et esitada üleüldine temperatuuri päring seadmetele
     sensors.requestTemperatures(); 
 
-    // Check the results of the readings.
+    // Kontrolli näitude tulemusi.
     if (result == 0) {
         Serial.print("Temperature: ");
         Serial.print(temperature);
@@ -105,11 +101,6 @@ void loop() {
     tft.println("Air quality: " + d5 + "ppm");;
     tft.println("");
     tft.setTextColor(ILI9341_PINK);
-    //tft.println("         (^_^)  o");
-    //tft.println("        /|   |\\/");
-    //tft.println("       / |___|");
-    //tft.println("      o  |   |");
-    //tft.println("        _| | |_");
     tft.println("       _,-._ ");
     tft.println("      / \\_/ \\  ___");
     tft.println("      >-(_)-< / _/");
