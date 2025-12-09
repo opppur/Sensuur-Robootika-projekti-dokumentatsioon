@@ -67,10 +67,6 @@ Capacitive Soil Moisture Sensor V1.2 - mullaniiskuse sensor
 Draiverplaadid/moodulid:
 ILI9341 2.8" TFT LCD ekraanimoodul (SPI liides)
 
-Kinnitused ja mehhaanika:
-
-
-
 ---
 
 ## 6. Ühendusskeem
@@ -87,11 +83,11 @@ Koodi kirjeldus: Tööprotsess (loop funktsioon)
 
 Süsteem töötab lõputus tsüklis ja teeb järgmist:
 
-Andmete lugemine: Küsib kõigilt anduritelt värsked näidud.
+1) Andmete lugemine: Küsib kõigilt anduritelt värsked näidud.
 
-Arvutisse saatmine: Kui andmete lugemine õnnestus, prindib kood tulemused Serial Monitorile (arvutiekraanile).
+2) Arvutisse saatmine: Kui andmete lugemine õnnestus, prindib kood tulemused Serial Monitorile (arvutiekraanile).
 
-Ekraanile kuvamine (ILI9341):
+3) Ekraanile kuvamine (ILI9341):
 Ekraan puhastatakse iga kord mustaks (fillScreen), et vältida tekstide kattumist.
 
 Andmed kirjutatakse ekraanile erinevate värvidega:
