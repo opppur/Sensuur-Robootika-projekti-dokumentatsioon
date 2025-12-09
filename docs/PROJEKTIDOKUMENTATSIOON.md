@@ -3,74 +3,72 @@
 ## 1. Projekti eesmärk ja seadme lühikirjeldus
 **Mis asi see on, mida ja miks me teeme? Millist praktilist probleemi see lahendab?**
 
-Näide stiilist:
-- Meie projekti eesmärk on luua ventilaator, mida saab juhtida infrapuna puldiga.
-- Seadet saab kasutada näiteks ruumi jahutamiseks olukorras, kus käega lülitile ulatamine on ebamugav.
-- Peamised komponendid: elektrimootor, servo, ventilaatori labad (3D prinditud), Arduino mikrokontroller.
+Meie projekti eesmärk on luua nutikas taimede hooldussüsteem, mis jälgib keskkonnatingimusi ja kuvab need reaalajas. 
+See lahendab probleemi, kus taimekasvatajad peavad pidevalt käsitsi kontrollima mulla niiskust, õhutemperatuuri, niiskust ja õhukvaliteeti.
 
-👉 _Asenda see kirjeldus enda seadme kirjeldusega._
+Seade on eriti kasulik:
+Sise- ja välitaimekasvatajatele, kes soovivad automatiseeritud keskkonnaseire süsteemi
+Taimekodu harrastajatele, kes tahavad oma taimede kasvuks optimaalseid tingimusi
+Eksperimentaalsete taimede kasvatamiseks, kus täpne andmete kogumine on oluline
+
+Peamised komponendid: Arduino Uno R4 Wifi 
+                      DHT11 - Sensor mõõdab (õhu) temperatuuri ja õhuniiskust
+                      DS18B20 one-wire digital temperature sensor - Sensor mõõdab (mulla) sensori otsaga kontaktis oleva materjali temperatuuri
+                      Air Quality sensor MQ135 - Sensor mõõdab õhukvliteeti tajudes osakesi õhus (ning võttes arvesse DHT11 näitusid saab täpsema lugemi)
+                      Capacitive Soil Moisture Sensor V1.2 - Mõõdab mulla niiskust
+                      ILI9341 2.8 Inch TFT LCD - Ekraan
+                      2 x (Level Converter - 3.3V to 5V) - Loogikamuundur Arduino ja ekraani ühendamiseks
 
 ---
 
 ## 2. Sisendite loetelu
 **Millised on süsteemi poolt loetavad / mõõdetavad sisendid? Millega neid mõõdetakse / tuvastatakse?**
 
-Kirjelda kõik sisendid eraldi punktidena.  
-Näited (asenda enda projektiga):
-
-- Nupp "vasakule" puldil → IR-sensor loeb signaali
-- Nupp "paremale" puldil → IR-sensor loeb signaali
-- Nupp "+" puldil → IR-sensor loeb signaali (tõsta kiirust)
-- Nupp "-" puldil → IR-sensor loeb signaali (vähenda kiirust)
-- ON/OFF nupp → IR-sensor loeb signaali
-
-👉 _Kui sinu süsteem kasutab muid sensoreid (ultraheli, temperatuuriandur, valgusandur, joystick, BLE telefonis vms), kirjelda need siin koos füüsilise sisendi allikaga._
+- Õhutemperatuur ja niiskus: DHT11 sensor
+- Mullatemperatuur (mulla või muu materjali temperatuur): DS18B20 one-wire digitaalne temperatuuri sensor
+- Õhukvaliteet (osakeste kontsentratsioon õhus): MQ135 õhukvaliteedi sensor
+- Mulla niiskustase: Capacitive Soil Moisture Sensor V1.2
 
 ---
 
 ## 3. Väljundite loetelu
 **Mida süsteem teeb / muudab? Millega väljund realiseeritakse?**
 
-Näited (asenda enda projektiga):
-- Ventilaator pöörleb kiiremini / aeglasemalt → DC mootor
-- Ventilaator suunab õhu vasakule / paremale → servo
-- LED süttib / kustub → LED
-- Ekraanile kuvatakse temperatuur → OLED ekraan
+- Keskkonnaparameetrite kuvamine reaalajas: ILI9341 2.8" TFT LCD ekraan
+- Andmete edastamine Wi-Fi kaudu (potentsiaalne laiendus): Arduino Uno R4 Wifi sisseehitatud Wi-Fi moodul
+- Visuaalne tagasiside kasutajale (näiteks ekraanis kirjeldatud indikaatorid mullaniiskuse / õhku / CO2 kohta)
 
 ---
 
 ## 4. Nõuded loodavale seadmele
 **Mis peab toimuma, kui kasutaja teeb mingi toimingu? Kirjelda käitumisloogika.**
 
-Kirjuta reeglid kujul "Kui X, siis Y".  
-Näited (kohanda enda projektile):
+Kui süsteem lülitatakse sisse, siis:
+Kõik sensorid alustavad mõõtmisi
+Ekraan kuvab avakuva kõigi sensorite hetkeväärtustega
+Süsteem kuvab eraldi vaateid iga sensori jaoks
 
-- Kui vajutatakse ON/OFF nuppu, siis:
-  - kui ventilaator on väljas → ventilaator lülitub sisse keskmise kiirusega;
-  - kui ventilaator töötab → ventilaator pöördub keskasendisse ja lülitub välja.
-
-- Kui vajutatakse vasak/noole nuppu, liigub ventilaatori pea iga vajutusega X kraadi vasakule, kuni vasak piir on käes. Kui piir käes, siis rohkem ei liigu.
-
-- Kui ventilaator töötab maksimumkiirusel ja vajutatakse "+" → kiirus ei suurene enam.
-
-👉 _Pane siia KÕIK kokkulepitud reeglid. Need reeglid on alus, mille järgi hiljem hinnatakse, kas teie lahendus vastab eesmärgile._
+Kasutaja oma arvutis / monitooring süsteemis võib:
+Jälgida ajalooliste andmete graafik, et kontrollida rahuldavad väärtused
 
 ---
 
 ## 5. Süsteemi füüsiliste komponentide loetelu
 **Millest seade koosneb? Lisa lingid või täpsed nimed, et keegi teine saaks sama asja uuesti osta / teha.**
 
-Tabelina või punktidena. Nt:
+Mikrokontroller: Arduino Uno R4 Wifi
 
-- Arduino Uno (mikrokontroller)
-- IR-vastuvõtja + pult (tüüp: XY123)  
-- Väike elektrimootor (DC, ___ V)
-- Mootoridraiver (L298N vms)
-- Servo (mudel: SG90 / MG90S / muu)
-- 3D-prinditud ventilaatori labad (STL-failid lisage kataloogi `hardware/`)
-- Toiteallikas (___ V / ___ A)
+Sensorid:
+DHT11 - õhu temperatuuri ja niiskuse sensor
+DS18B20 one-wire digital temperature sensor - mullatemperatuuri sensor
+MQ135 - õhukvaliteedi sensor
+Capacitive Soil Moisture Sensor V1.2 - mullaniiskuse sensor
 
-👉 _Kui ise tegite 3D mudeli, lisage STL või Fusion faili `hardware/` alla. Kui kasutasite netist leitud mudelit, märkige allikas._
+Draiverplaadid/moodulid:
+ILI9341 2.8" TFT LCD ekraanimoodul (SPI liides)
+
+Kinnitused ja mehhaanika:
+??
 
 ---
 
@@ -91,11 +89,25 @@ Kui skeemi pole veel joonistatud, siis vähemalt kirjelda tekstina, nt:
 - Mootoridraiveri ENA → Arduino pin 5 (PWM)  
 - GND kõik ühises massis
 
-👉 _Skeem peab lõpuks olemas olema, mitte ainult tekst._
-
 ---
 
 ## 7. Süsteemi juhtiv kood (või pseudokood)
 **Kirjelda programmi loogikat nii, et seda on võimalik aru saada ka hiljem.**  
-Kui kood töötab, pane siia lühike selgitus + viide failile `src/projektinimi.ino`.  
-Kui kood pole veel valmis, lisa siia pseudokood.
+
+Koodi source: (https://github.com/opppur/Sensuur-Robootika-projekti-dokumentatsioon/blob/main/src/sensuur.ino) 
+Koodi kirjeldus: Tööprotsess (loop funktsioon)
+
+Süsteem töötab lõputus tsüklis ja teeb järgmist:
+
+Andmete lugemine: Küsib kõigilt anduritelt värsked näidud.
+
+Arvutisse saatmine: Kui andmete lugemine õnnestus, prindib kood tulemused Serial Monitorile (arvutiekraanile).
+
+Ekraanile kuvamine (ILI9341):
+Ekraan puhastatakse iga kord mustaks (fillScreen), et vältida tekstide kattumist.
+
+Andmed kirjutatakse ekraanile erinevate värvidega:
+Valge: Õhutemperatuur ja niiskus.
+Kollane: Mulla niiskus ja temperatuur.
+Roheline: Õhu kvaliteet.
+
