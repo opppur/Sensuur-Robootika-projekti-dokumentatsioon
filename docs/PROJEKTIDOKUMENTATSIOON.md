@@ -11,13 +11,14 @@ Sise- ja välitaimekasvatajatele, kes soovivad automatiseeritud keskkonnaseire s
 Taimekodu harrastajatele, kes tahavad oma taimede kasvuks optimaalseid tingimusi
 Eksperimentaalsete taimede kasvatamiseks, kus täpne andmete kogumine on oluline
 
-Peamised komponendid: Arduino Uno R4 Wifi 
-                      DHT11 - Sensor mõõdab (õhu) temperatuuri ja õhuniiskust
-                      DS18B20 one-wire digital temperature sensor - Sensor mõõdab (mulla) sensori otsaga kontaktis oleva materjali temperatuuri
-                      Air Quality sensor MQ135 - Sensor mõõdab õhukvliteeti tajudes osakesi õhus (ning võttes arvesse DHT11 näitusid saab täpsema lugemi)
-                      Capacitive Soil Moisture Sensor V1.2 - Mõõdab mulla niiskust
-                      ILI9341 2.8 Inch TFT LCD - Ekraan
-                      2 x (Level Converter - 3.3V to 5V) - Loogikamuundur Arduino ja ekraani ühendamiseks
+Peamised komponendid: 
+- Arduino Uno R4 Wifi 
+- DHT11 - Sensor mõõdab (õhu) temperatuuri ja õhuniiskust
+- DS18B20 one-wire digital temperature sensor - Sensor mõõdab (mulla) sensori otsaga kontaktis oleva materjali temperatuuri
+- Air Quality sensor MQ135 - Sensor mõõdab õhukvliteeti tajudes osakesi õhus (ning võttes arvesse DHT11 näitusid saab täpsema lugemi)
+- Capacitive Soil Moisture Sensor V1.2 - Mõõdab mulla niiskust
+- ILI9341 2.8 Inch TFT LCD - Ekraan
+- 2 x (Level Converter - 3.3V to 5V) - Loogikamuundur Arduino ja ekraani ühendamiseks
 
 ---
 
