@@ -42,7 +42,7 @@ Peamised komponendid:
 ---
 
 ## 4. Nõuded loodavale seadmele
-**Mis peab toimuma, kui kasutaja teeb mingi toimingu? Kirjelda käitumisloogika.**
+**Mis peab toimuma, kui kasutaja teeb mingi toimingu? Käitumisloogika.**
 
 Kui süsteem lülitatakse sisse, siis:
 Kõik sensorid alustavad mõõtmisi
@@ -55,7 +55,7 @@ Jälgida ajalooliste andmete graafik, et kontrollida rahuldavad väärtused
 ---
 
 ## 5. Süsteemi füüsiliste komponentide loetelu
-**Millest seade koosneb? Lisa lingid või täpsed nimed, et keegi teine saaks sama asja uuesti osta / teha.**
+**Millest seade koosneb?**
 
 Mikrokontroller: Arduino Uno R4 Wifi
 
@@ -77,7 +77,7 @@ ILI9341 2.8" TFT LCD ekraanimoodul (SPI liides)
 ---
 
 ## 7. Süsteemi juhtiv kood (või pseudokood)
-**Kirjelda programmi loogikat nii, et seda on võimalik aru saada ka hiljem.**  
+**Kirjeldatud programmi loogika nii, et seda on võimalik aru saada ka hiljem.**  
 
 Koodi source: (https://github.com/opppur/Sensuur-Robootika-projekti-dokumentatsioon/blob/main/src/sensuur.ino) 
 Koodi kirjeldus: Tööprotsess (loop funktsioon)
