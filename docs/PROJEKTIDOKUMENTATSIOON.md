@@ -68,7 +68,8 @@ Draiverplaadid/moodulid:
 ILI9341 2.8" TFT LCD ekraanimoodul (SPI liides)
 
 Kinnitused ja mehhaanika:
-??
+
+![Fritzing graaf](media/FritzingGraph/sensuur_bb.png)
 
 ---
 
