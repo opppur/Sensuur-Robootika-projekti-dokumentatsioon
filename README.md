@@ -26,7 +26,5 @@ Iga meeskond **forkib** selle repo ja dokumenteerib siin oma seadme/projekti:
 ## Meeskond
 
 - Õppeaine: IFI6203.DT Robootika  
-- Autor(id): _[täida nimed siia]_  
-- Aasta / semester: _[nt 2025 kevad]_  
-
-> NB! Ärge kustutage osi, mis on nõutud, küll aga võite lisada lisafaile (katsetused, logid, alternatiivsed skeemid jne).
+- Autor(id): Jonas Oliveira, Nikita Vassiljev, Adrian-Edgar Bojev, Ksaveri Petrov
+- Aasta / semester: sügis 2025 
